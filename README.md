@@ -6,4 +6,4 @@ Nabeel Saleem,
 Jeremy Diaz,
 Chang Liu,
 Smita Jain,
-Yiyang Shen,
+Yiyang Shen
