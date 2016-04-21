@@ -4,13 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_main" tools:context=".MainActivity">
+    tools:showIn="@layout/activity_diary_entry_edit"
+    tools:context="com.example.jeremy.spark.DiaryEntryEditActivity">
 
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/first_time_setup_1"
-        android:id="@+id/imageButton1"
+        android:background="@drawable/diary_entry_edit"
+        android:id="@+id/imageButton"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true" />
+
 </RelativeLayout>
