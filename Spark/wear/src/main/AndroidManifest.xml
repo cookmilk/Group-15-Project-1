@@ -39,5 +39,6 @@
             android:name=".Done"
             android:label="@string/title_activity_done"></activity>
     </application>
+    <service android:name=".WatchToPhoneService" />
 
 </manifest>
