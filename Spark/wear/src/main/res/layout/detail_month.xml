@@ -19,7 +19,7 @@
         android:id="@+id/title"
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"
-        android:textColor="#1DA277"
+        android:textColor="#6BD799"
         android:layout_weight="0.09" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:id="@+id/context"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.20"
-        android:textColor="@color/black"
+        android:textColor="#222222"
         android:textAlignment="center" />
     <TextView
         android:layout_width="143dp"
@@ -36,6 +36,6 @@
         android:id="@+id/context2"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.23"
-        android:textColor="@color/black"
+        android:textColor="#222222"
         android:textAlignment="center" />
 </LinearLayout>
