@@ -45,7 +45,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Day"
                 android:id="@+id/textView3"
-                android:textColor="#d9d9d9"
+                android:textColor="#222222"
                 android:layout_gravity="center_horizontal"
                 android:textAlignment="center" />
         </LinearLayout>
@@ -64,7 +64,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Month"
                 android:id="@+id/textView5"
-                android:textColor="#d9d9d9"
+                android:textColor="#222222"
                 android:layout_gravity="center_horizontal" />
 
             <Space

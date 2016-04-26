@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    android:background="@color/white">
+    android:background="#222222">
 
 
     <Space
@@ -28,7 +28,7 @@
         android:id="@+id/context"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.20"
-        android:textColor="#222222"
+        android:textColor="@color/white"
         android:textAlignment="center" />
     <TextView
         android:layout_width="143dp"
@@ -36,6 +36,6 @@
         android:id="@+id/context2"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.23"
-        android:textColor="#222222"
+        android:textColor="@color/white"
         android:textAlignment="center" />
 </LinearLayout>
