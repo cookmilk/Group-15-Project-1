@@ -7,87 +7,81 @@
 
     tools:context="com.example.cookmilk.spark.MainActivity"
     tools:deviceIds="wear"
-    android:background="@color/white"
+    android:background="@drawable/bg"
     android:weightSum="1">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1">
+        android:layout_height="200dp"
+        android:weightSum="1"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="40dp"
+        android:background="#222222">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="360dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/day"
-            android:background="#6BD799"
-            android:layout_weight="0.45"
-            android:weightSum="1">
-
+            android:layout_marginTop="5dp">
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/day"
+                android:padding="3dp"
+                android:layout_weight="0.45"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="1"
+                android:background="#6BD799">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Today"
+                    android:textSize="15dp"
+                    android:id="@+id/textView3"
+                    android:textColor="#222222"
+                    android:layout_gravity="center_horizontal"
+                    android:textAlignment="center" />
 
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0.62" />
-
-            <TextView
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Day"
-                android:id="@+id/textView3"
-                android:textColor="#222222"
                 android:layout_gravity="center_horizontal"
-                android:textAlignment="center" />
+                android:padding="3dp"
+                android:id="@+id/month"
+                android:background="#6BD799">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="This Month"
+                    android:textSize="15dp"
+                    android:id="@+id/textView5"
+                    android:textColor="#222222" />
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="282dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/month"
-            android:background="#6BD799">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Month"
-                android:id="@+id/textView5"
-                android:textColor="#222222"
-                android:layout_gravity="center_horizontal" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="center_horizontal" />
-        </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="  Spark"
-            android:textColor="@color/black"
-            android:id="@+id/textView" />
-
-        <TextView
-            android:layout_width="141dp"
+            android:layout_width="156dp"
             android:layout_height="wrap_content"
             android:text="Have you entered your mood yet? Swipe left!"
             android:id="@+id/textView2"
-            android:textColor="@color/black"
-            android:layout_gravity="center_horizontal" />
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="39dp"
+            />
 
     </LinearLayout>
 </android.support.wearable.view.BoxInsetLayout>

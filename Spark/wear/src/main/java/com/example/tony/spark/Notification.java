@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.wearable.view.GridPagerAdapter;
 import android.support.wearable.view.GridViewPager;
 import android.support.wearable.view.WatchViewStub;
@@ -28,8 +29,20 @@ public class Notification extends Activity {
         dayLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Notification.this, Done.class);
-                startActivity(i);
+                new CountDownTimer(2000,1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        //set the new Content of your activity
+                        setContentView(R.layout.activity_done);
+                    }
+                }.start();
+
+//                Intent i = new Intent(Notification.this, Done.class);
+//                startActivity(i);
             }
         });
 //        final GridViewPager pager = (GridViewPager) findViewById(R.id.pager);
