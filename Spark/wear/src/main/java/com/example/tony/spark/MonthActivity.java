@@ -69,18 +69,18 @@ public class MonthActivity extends Activity {
 
 
             if (col == 0) {
-                title.setText("March 2016");
+                title.setText("April 2016");
                 context.setText("Average Mood");
             } else if (col == 1) {
-                title.setText("March 2016");
+                title.setText("April 2016");
                 context.setText("Activity Average");
                 context2.setText("3 hours 9 minutes");
             } else if (col == 2) {
-                title.setText("March 2016");
+                title.setText("April 2016");
                 context.setText("Inactivity Average");
                 context2.setText("6 hours 19 minutes");
             } else {
-                title.setText("March 2016");
+                title.setText("April 2016");
                 context.setText("Sleep Average");
                 context2.setText("8 hours 20 minutes");
             }

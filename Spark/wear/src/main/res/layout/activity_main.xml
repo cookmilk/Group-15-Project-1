@@ -20,30 +20,30 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="9dp">
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/day"
-                android:padding="3dp"
-                android:layout_weight="0.45"
-                android:layout_marginLeft="35dp"
+
                 android:layout_marginRight="10dp"
                 android:weightSum="1"
                 android:background="#6BD799">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Today"
                     android:textSize="15dp"
                     android:id="@+id/textView3"
-                    android:textColor="#222222"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center" />
 
@@ -51,21 +51,22 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center_horizontal"
-                android:padding="3dp"
                 android:id="@+id/month"
                 android:background="#6BD799">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="86dp"
+                    android:layout_height="25dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="This Month"
                     android:textSize="15dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
                     android:id="@+id/textView5"
-                    android:textColor="#222222" />
+                    android:textColor="#000000" />
 
             </LinearLayout>
 
@@ -79,7 +80,7 @@
             android:text="Have you entered your mood yet? Swipe left!"
             android:id="@+id/textView2"
             android:textColor="@color/white"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="7dp"
             android:layout_marginLeft="39dp"
             />
 
