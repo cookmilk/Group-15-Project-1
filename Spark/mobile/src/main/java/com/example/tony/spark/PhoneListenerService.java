@@ -16,13 +16,15 @@ public class PhoneListenerService extends WearableListenerService {
 
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
-        Log.d("T", "in PhoneListenerService, got: " + messageEvent.getPath());
+        Log.i("WE HERE", "WE REALLY IN HERE");
+        Log.d("T", "BUT DID U KNOW got: " + messageEvent.getPath());
         if( messageEvent.getPath().equalsIgnoreCase(NOTICE) ) {
 
             // Value contains the String we sent over in WatchToPhoneService, "good job"
             String value = new String(messageEvent.getData(), StandardCharsets.UTF_8);
 
             // Make a toast with the String
+            Log.i("WE GOT THE TOAST", "WE'RE GOING IN");
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
 

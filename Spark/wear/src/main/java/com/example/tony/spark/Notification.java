@@ -14,6 +14,9 @@ import android.widget.TextView;
 public class Notification extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i("WE LAUNCHED", "TRUNA SENT");
+        Intent sendIntent = new Intent(this, WatchToPhoneService.class);
+        this.startService(sendIntent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         TextView happy = (TextView) findViewById(R.id.textView4);

@@ -139,6 +139,11 @@
             android:label="@string/title_activity_home_screen"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <service android:name=".PhoneListenerService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
