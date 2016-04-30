@@ -16,5 +16,15 @@
     <string name="title_activity_settings1">Settings1Activity</string>
     <string name="title_activity_settings2">Settings2Activity</string>
     <string name="title_activity_settings3">Settings3Activity</string>
-    <string name="title_activity_home_screen">HomeScreenActivity</string>
+    <string name="title_activity_home_screen">Spark!</string>
+    <string name="setup_string_1">Before you start using Spark - CBT Diary, it is recommended for you
+    to do the first time setup. This is entirely optional and you can always change it through the
+    options page.</string>
+    <string name="title_activity_home_screen_menu">HomeScreenMenuActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string-array name="analytics_graphs">
+        <item>Line Graph</item>
+    </string-array>
 </resources>

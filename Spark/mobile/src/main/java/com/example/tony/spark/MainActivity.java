@@ -11,9 +11,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //View myView = findViewById(R.id.imageButton1);
 
-        View myView = findViewById(R.id.imageButton1);
 
+        //Deprecated
+        /*
         myView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+        */
     }
 
 }
