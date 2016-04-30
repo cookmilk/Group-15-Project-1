@@ -19,6 +19,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".AnalyticsActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".FirstTimeSetup2Activity"
             android:label="@string/title_activity_main2"
             android:parentActivityName=".MainActivity"
@@ -161,6 +171,11 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.tony.spark.Setup2Activity" />
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 
