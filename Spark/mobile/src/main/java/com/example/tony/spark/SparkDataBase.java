@@ -24,7 +24,7 @@ public class SparkDataBase extends SQLiteOpenHelper {
 
     public SparkDataBase(Context context)
     {
-        super(context, SPARK_DATABASE_NAME , null, 1);
+        super(context, SPARK_DATABASE_NAME, null, 1);
     }
 
     @Override
@@ -32,19 +32,19 @@ public class SparkDataBase extends SQLiteOpenHelper {
         // TODO Auto-generated method stub
         db.execSQL(
                 "create table active " +
-                        "(id integer primary key autoincrement, date text, step_counts integer)"
+                        "(id integer primary key autoincrement, date text, time text, step_counts integer)"
         );
         db.execSQL(
                 "create table inactive " +
-                        "(id integer primary key autoincrement, date text, inactive_seconds integer)"
+                        "(id integer primary key autoincrement, date text, time text, inactive_seconds integer)"
         );
         db.execSQL(
                 "create table mood " +
-                        "(id integer primary key autoincrement, date text, level integer)"
+                        "(id integer primary key autoincrement, date text, time text, level integer)"
         );
         db.execSQL(
                 "create table sleep " +
-                        "(id integer primary key autoincrement, date text, sleep_seconds integer)"
+                        "(id integer primary key autoincrement, date text, time text, sleep_seconds integer)"
         );
         db.execSQL(
                 "create table diary " +
@@ -63,41 +63,45 @@ public class SparkDataBase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertActive (String date, int stepCounts)
+    public boolean insertActive (String date, String time, int stepCounts)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("step_counts", stepCounts);
         contentValues.put("date", date);
+        contentValues.put("time", time);
         db.insert("active", null, contentValues);
         return true;
     }
 
-    public boolean insertInactive (String date, int inactiveSecs)
+    public boolean insertInactive (String date, String time, int inactiveSecs)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("date", date);
+        contentValues.put("time", time);
         contentValues.put("inactive_seconds", inactiveSecs);
         db.insert("inactive", null, contentValues);
         return true;
     }
 
-    public boolean insertMood (String date, int moodLevel)
+    public boolean insertMood (String date, String time, int moodLevel)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("date", date);
+        contentValues.put("time", time);
         contentValues.put("level", moodLevel);
         db.insert("mood", null, contentValues);
         return true;
     }
 
-    public boolean insertSleep (String date, int sleepSecs)
+    public boolean insertSleep (String date, String time, int sleepSecs)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("date", date);
+        contentValues.put("time", time);
         contentValues.put("sleep_seconds", sleepSecs);
         db.insert("sleep", null, contentValues);
         return true;
@@ -117,88 +121,94 @@ public class SparkDataBase extends SQLiteOpenHelper {
         return true;
     }
 
-    public Cursor getActive(String date){
+    public ArrayList<ArrayList<String>> getActive(String date){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from active where date=?", new String[] {date} );
-        return res;
+        Cursor res =  db.rawQuery( "select time, step_counts from active where date=?", new String[] {date} );
+        return cursorToArrayList(res);
     }
 
-    public Cursor getActivePastWeek() {
+    public ArrayList<ArrayList<String>> getActivePastWeek() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select sum(step_counts) from active group by date order by date desc limit 7", null );
-        return res;
+        Cursor res =  db.rawQuery( "select date, sum(step_counts) from active group by date order by date desc limit 7", null );
+        return cursorToArrayList(res);
     }
 
-    public Cursor getActivePastMonth() {
+    public ArrayList<ArrayList<String>> getActivePastMonth() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select sum(step_counts) from active group by date order by date desc limit 30", null );
-        return res;
+        Cursor res =  db.rawQuery( "select date, sum(step_counts) from active group by date order by date desc limit 30", null );
+        return cursorToArrayList(res);
     }
 
-    public Cursor getInactive(String date){
+    public ArrayList<ArrayList<String>> getInactive(String date){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from inactive where date=?", new String[] {date} );
-        return res;
+        Cursor res =  db.rawQuery( "select time, inactive_seconds from inactive where date=?", new String[] {date} );
+        return cursorToArrayList(res);
     }
 
-    public Cursor getInactivePastWeek() {
+    public ArrayList<ArrayList<String>> getInactivePastWeek() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select sum(inactive_seconds) from inactive group by date order by date desc limit 7", null );
-        return res;
+        Cursor res =  db.rawQuery( "select date, sum(inactive_seconds) from inactive group by date order by date desc limit 7", null );
+        return cursorToArrayList(res);
     }
 
-    public Cursor getInactivePastMonth() {
+    public ArrayList<ArrayList<String>> getInactivePastMonth() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select sum(inactive_seconds) from inactive group by date order by date desc limit 30", null );
-        return res;
+        Cursor res =  db.rawQuery( "select date, sum(inactive_seconds) from inactive group by date order by date desc limit 30", null );
+        return cursorToArrayList(res);
     }
 
-    public Cursor getSleep(String date){
+    public ArrayList<ArrayList<String>> getSleep(String date){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from sleep where date=?", new String[] {date} );
-        return res;
+        Cursor res =  db.rawQuery( "select time, sleep_seconds from sleep where date=?", new String[] {date} );
+        return cursorToArrayList(res);
     }
 
-    public Cursor getSleepPastWeek() {
+    public ArrayList<ArrayList<String>> getSleepPastWeek() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select sum(sleep_seconds) from sleep group by date order by date desc limit 7", null );
-        return res;
+        Cursor res =  db.rawQuery( "select date, sum(sleep_seconds) from sleep group by date order by date desc limit 7", null );
+        return cursorToArrayList(res);
     }
 
-    public Cursor getSleepPastMonth() {
+    public ArrayList<ArrayList<String>> getSleepPastMonth() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select sum(sleep_seconds) from sleep group by date order by date desc limit 30", null );
-        return res;
+        Cursor res =  db.rawQuery( "select date, sum(sleep_seconds) from sleep group by date order by date desc limit 30", null );
+        return cursorToArrayList(res);
     }
 
-    public Cursor getMood(String date){
+    public ArrayList<ArrayList<String>> getMood(String date){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from mood where date=?", new String[] {date} );
-        return res;
+        Cursor res =  db.rawQuery( "select time, level from mood where date=?", new String[] {date} );
+        return cursorToArrayList(res);
     }
 
-    public Cursor getMoodPastWeek() {
+    public ArrayList<ArrayList<String>> getMoodPastWeek() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select avg(level) from mood group by date order by date desc limit 7", null );
-        return res;
+        Cursor res =  db.rawQuery( "select date, avg(level) from mood group by date order by date desc limit 7", null );
+        return cursorToArrayList(res);
     }
 
-    public Cursor getMoodPastMonth() {
+    public ArrayList<ArrayList<String>> getMoodPastMonth() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select avg(level) from mood group by date order by date desc limit 30", null );
-        return res;
+        Cursor res =  db.rawQuery( "select date, avg(level) from mood group by date order by date desc limit 30", null );
+        return cursorToArrayList(res);
     }
 
-    public Cursor getDiarySummary(String date){
+    public ArrayList<ArrayList<String>> getDiarySummary(String date){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select time, initial_thoughts from diary where date=?", new String[] {date} );
-        return res;
+        Cursor res =  db.rawQuery("select time, initial_thoughts from diary where date=?", new String[]{date});
+        return cursorToArrayList(res);
     }
 
-    public Cursor getSingleDiary(String date, String time) {
+    public ArrayList<String> getSingleDiary(String date, String time) {
+        ArrayList<String> result = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select initial_thoughts, action_plan, challenge from diary where date=? and time=?", new String[] {date, time});
-        return res;
+        Cursor res = db.rawQuery("select initial_thoughts, action_plan, challenge, mood from diary where date=? and time=?", new String[] {date, time});
+        res.moveToFirst();
+        result.add(res.getString(0));
+        result.add(res.getString(1));
+        result.add(res.getString(2));
+        result.add(String.valueOf(res.getInt(3)));
+        return result;
     }
 
     public int numberOfRowsActive(){
@@ -255,6 +265,7 @@ public class SparkDataBase extends SQLiteOpenHelper {
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
         ArrayList<String> time = new ArrayList<String>();
         ArrayList<String> value = new ArrayList<String>();
+        cursor.moveToFirst();
         int count = cursor.getCount();
         for (int i = 0; i < count; i++) {
             time.add(cursor.getString(0));
