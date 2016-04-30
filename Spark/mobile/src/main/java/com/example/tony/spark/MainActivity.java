@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,38 +12,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //View myView = findViewById(R.id.imageButton1);
 
+        Button skip_button = (Button) findViewById(R.id.setup_1_button_1);
+        Button next_button = (Button) findViewById(R.id.setup_1_button_2);
 
-        //Deprecated
-        /*
-        myView.setOnClickListener(new View.OnClickListener() {
+        skip_button.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View arg0) {
-                //startActivity(new Intent(MainActivity.this, FirstTimeSetup2Activity.class));
+            public void onClick(View view){
+                startActivity(new Intent(MainActivity.this, HomeScreenMenuActivity.class));
             }
         });
-        myView.setOnTouchListener(new OnSwipeTouchListener(this) {
-            public boolean onSwipeTop() {
-                return true;
-            }
 
-            public boolean onSwipeRight() {
-                startActivity(new Intent(MainActivity.this, FirstTimeSetup2Activity.class));
-                return true;
+        next_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                startActivity(new Intent(MainActivity.this, Setup2Activity.class));
             }
-
-            public boolean onSwipeLeft() {
-                startActivity(new Intent(MainActivity.this, HomeScreenActivity.class));
-                return true;
-            }
-
-            public boolean onSwipeBottom() {
-                return true;
-            }
-
         });
-        */
     }
 
 }
