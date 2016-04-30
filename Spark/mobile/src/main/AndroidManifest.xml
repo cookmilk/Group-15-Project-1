@@ -143,6 +143,25 @@
             android:label="@string/title_activity_home_screen_menu"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".HomeScreen2Activity"
+            android:label="@string/title_activity_home_screen2"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Setup2Activity"
+            android:label="@string/title_activity_setup2"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Setup3Activity"
+            android:label="@string/title_activity_setup3"
+            android:parentActivityName=".Setup2Activity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tony.spark.Setup2Activity" />
+        </activity>
     </application>
 
 </manifest>

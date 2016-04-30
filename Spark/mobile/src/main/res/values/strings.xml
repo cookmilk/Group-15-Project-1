@@ -27,4 +27,7 @@
     <string-array name="analytics_graphs">
         <item>Line Graph</item>
     </string-array>
+    <string name="title_activity_home_screen2">HomeScreen2Activity</string>
+    <string name="title_activity_setup2">Setup2Activity</string>
+    <string name="title_activity_setup3">Setup3Activity</string>
 </resources>

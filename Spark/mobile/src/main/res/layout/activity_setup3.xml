@@ -4,8 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context="com.example.jeremy.spark.FirstTimeSetup2Activity">
+    tools:context="com.example.tony.spark.Setup3Activity">
 
-    <include layout="@layout/content_main2" />
+    <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay">
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_setup3" />
 
 </android.support.design.widget.CoordinatorLayout>
