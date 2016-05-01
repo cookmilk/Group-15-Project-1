@@ -29,7 +29,6 @@ public class MainActivity extends WearableActivity implements SensorEventListene
     private TextView text;
 
     private final int notification_id = 1;
-    private final String NOTIFICATION_ID = "notification_id";
 
     /* These are the classes you use to start the notification */
     private NotificationCompat.Builder notification_builder;
@@ -48,21 +47,26 @@ public class MainActivity extends WearableActivity implements SensorEventListene
             }
         });
         int notificationId = 001;
+        String intent = getIntent().getStringExtra("data");
+
+        if (intent != null){
+            final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
+                    .setSmallIcon(R.drawable.logo)
+                    .setContentTitle("Suggestions!")
+                    .setContentText(intent);
+
+            Intent resultIntent = new Intent(this, Notification.class);
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+            stackBuilder.addParentStack(Notification.class);
+            stackBuilder.addNextIntent(resultIntent);
+
+            PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(
+                    0, PendingIntent.FLAG_UPDATE_CURRENT);
+            mBuilder.setContentIntent(resultPendingIntent);
+            final NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManager.notify(notification_id, mBuilder.build());
+        }
 // Build intent for notification content
-        final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.logo)
-                .setContentTitle("Suggestions!")
-                .setContentText("Maybe you should take a walk");
-
-        Intent resultIntent = new Intent(this, Notification.class);
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack(Notification.class);
-        stackBuilder.addNextIntent(resultIntent);
-
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(
-                0, PendingIntent.FLAG_UPDATE_CURRENT);
-        mBuilder.setContentIntent(resultPendingIntent);
-        final NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
 
 // Build the notification and issues it with notification manager.
@@ -72,9 +76,9 @@ public class MainActivity extends WearableActivity implements SensorEventListene
         monthLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mNotificationManager.notify(notification_id, mBuilder.build());
-//                Intent i = new Intent(MainActivity.this, MonthActivity.class);
-//                startActivity(i);
+
+                Intent i = new Intent(MainActivity.this, MonthActivity.class);
+                startActivity(i);
             }
         });
 
