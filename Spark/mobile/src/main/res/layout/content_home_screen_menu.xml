@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:alpha=".54"
-                        android:text="Status"
+                        android:text="Last Recorded Mood"
                         android:textColor="#000000"
                         android:textSize="24dp"
                         android:layout_marginBottom="8dp"/>
@@ -114,7 +114,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:background="#00000000"
-                            android:text="XX"
+                            android:text="8 hrs"
                             android:alpha=".54"
                             android:textSize="24dp"/>
                     </LinearLayout>
@@ -133,7 +133,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:background="#00000000"
-                            android:text="XX"
+                            android:text="5.1 K"
                             android:alpha=".54"
                             android:textSize="24dp"/>
                     </LinearLayout>
@@ -152,7 +152,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:background="#00000000"
-                            android:text="XX/XX"
+                            android:text="2.1/6  hrs"
                             android:alpha=".54"
                             android:textSize="24dp"/>
                     </LinearLayout>
