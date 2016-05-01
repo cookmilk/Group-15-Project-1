@@ -46,6 +46,7 @@ public class HomeScreenMenuActivity extends AppCompatActivity
             else if (emoticon.equals("neutral")){
                 moodpic.setImageResource(R.drawable.face_neutral);
                 suggest.setText("You should go outside and take a nice walk!");
+
             }
             else{
                 moodpic.setImageResource(R.drawable.face_neutral);
