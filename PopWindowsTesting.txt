@@ -1,6 +1,0 @@
-
-I have created a temp button for testing pop window.
-
-Uncomment the lines in following files to test.
-MainActivity.java
-content_main.xml 
