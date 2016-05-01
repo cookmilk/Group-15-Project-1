@@ -23,9 +23,11 @@ public class DiaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_diary);
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("M/dd");
-        final String date = df.format(c.getTime());
-        final String currTime = df.format("h:mm");
+        SimpleDateFormat df = new SimpleDateFormat("M/dd HH:mm");
+        final String dateTime = df.format(c.getTime());
+        String[] dateTimeArr = dateTime.split(" ");
+        final String date = dateTimeArr[0];
+        final String currTime = dateTimeArr[1];
         final SparkDataBase sdb = new SparkDataBase(this);
         Button today = (Button) findViewById(R.id.today);
         Button yesterday = (Button) findViewById(R.id.yesterday);
