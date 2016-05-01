@@ -1,7 +1,10 @@
 package com.example.tony.spark;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -46,22 +49,22 @@ public class MainActivity extends WearableActivity implements SensorEventListene
         });
         int notificationId = 001;
 // Build intent for notification content
-        Intent viewIntent = new Intent(this, DayActivity.class);
-        viewIntent.putExtra(NOTIFICATION_ID, notification_id);
-        PendingIntent viewPendingIntent =
-                PendingIntent.getActivity(this, 0, viewIntent, 0);
+        final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle("Suggestions!")
+                .setContentText("Maybe you should take a walk");
 
-        final NotificationCompat.Builder notificationBuilder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.logo)
-                        .setContentTitle("Suggested Activity")
-                        .setContentText("May do a hobby")
-                        .setContentIntent(viewPendingIntent)
-                        .setAutoCancel(true);
+        Intent resultIntent = new Intent(this, Notification.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(Notification.class);
+        stackBuilder.addNextIntent(resultIntent);
 
-// Get an instance of the Notificati   onManager service
-        final NotificationManagerCompat notificationManager =
-                NotificationManagerCompat.from(this);
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(
+                0, PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(resultPendingIntent);
+        final NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+
 // Build the notification and issues it with notification manager.
 
         LinearLayout monthLog = (LinearLayout) findViewById(R.id.month);
@@ -69,7 +72,7 @@ public class MainActivity extends WearableActivity implements SensorEventListene
         monthLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                notificationManager.notify(notification_id, notificationBuilder.build());
+                mNotificationManager.notify(notification_id, mBuilder.build());
 //                Intent i = new Intent(MainActivity.this, MonthActivity.class);
 //                startActivity(i);
             }
