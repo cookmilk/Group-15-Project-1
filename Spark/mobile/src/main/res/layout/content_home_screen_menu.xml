@@ -65,7 +65,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:src="@drawable/face_neutral"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                    android:id = "@+id/moodz"/>
 
                 <RelativeLayout
                     android:layout_marginTop="8dp"
@@ -74,6 +75,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/suggestion"
                         android:gravity="center"
                         android:paddingLeft="32dp"
                         android:paddingRight="32dp"

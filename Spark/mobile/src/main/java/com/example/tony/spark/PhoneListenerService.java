@@ -1,6 +1,7 @@
 package com.example.tony.spark;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -26,10 +27,16 @@ public class PhoneListenerService extends WearableListenerService {
             // Make a toast with the String
             Log.i("WE GOT THE TOAST", value);
             Context context = getApplicationContext();
-            int duration = Toast.LENGTH_SHORT;
 
-            Toast toast = Toast.makeText(context, value, duration);
-            toast.show();
+            Intent sendIntent = new Intent(this, HomeScreenMenuActivity.class);
+            sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            sendIntent.putExtra("emoticon", value);
+
+            startActivity(sendIntent);
+//            int duration = Toast.LENGTH_SHORT;
+//
+//            Toast toast = Toast.makeText(context, value, duration);
+//            toast.show();
 
         } else {
             super.onMessageReceived( messageEvent );
