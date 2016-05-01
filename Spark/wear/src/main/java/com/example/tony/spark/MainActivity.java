@@ -1,6 +1,7 @@
 package com.example.tony.spark;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -14,12 +15,22 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.NotificationCompat.WearableExtender;
 
 public class MainActivity extends WearableActivity implements SensorEventListener {
 
 //    private TextView mTextView;
     private BoxInsetLayout mContainerView;
     private TextView text;
+
+    private final int notification_id = 1;
+    private final String NOTIFICATION_ID = "notification_id";
+
+    /* These are the classes you use to start the notification */
+    private NotificationCompat.Builder notification_builder;
+    private NotificationManagerCompat notification_manager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,14 +44,34 @@ public class MainActivity extends WearableActivity implements SensorEventListene
                 startActivity(i);
             }
         });
+        int notificationId = 001;
+// Build intent for notification content
+        Intent viewIntent = new Intent(this, DayActivity.class);
+        viewIntent.putExtra(NOTIFICATION_ID, notification_id);
+        PendingIntent viewPendingIntent =
+                PendingIntent.getActivity(this, 0, viewIntent, 0);
+
+        final NotificationCompat.Builder notificationBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.logo)
+                        .setContentTitle("Suggested Activity")
+                        .setContentText("May do a hobby")
+                        .setContentIntent(viewPendingIntent)
+                        .setAutoCancel(true);
+
+// Get an instance of the Notificati   onManager service
+        final NotificationManagerCompat notificationManager =
+                NotificationManagerCompat.from(this);
+// Build the notification and issues it with notification manager.
 
         LinearLayout monthLog = (LinearLayout) findViewById(R.id.month);
 
         monthLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, MonthActivity.class);
-                startActivity(i);
+                notificationManager.notify(notification_id, notificationBuilder.build());
+//                Intent i = new Intent(MainActivity.this, MonthActivity.class);
+//                startActivity(i);
             }
         });
 

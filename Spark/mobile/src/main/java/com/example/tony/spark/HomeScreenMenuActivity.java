@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class HomeScreenMenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,6 +34,24 @@ public class HomeScreenMenuActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        String emoticon = getIntent().getStringExtra("emoticon");
+        ImageView moodpic = (ImageView) findViewById(R.id.moodz);
+        TextView suggest = (TextView) findViewById(R.id.suggestion);
+        if (emoticon != null){
+            if (emoticon.equals("happy")){
+                moodpic.setImageResource(R.drawable.face_neutral);
+                suggest.setText("  ");
+            }
+            else if (emoticon.equals("neutral")){
+                moodpic.setImageResource(R.drawable.face_neutral);
+                suggest.setText("You should go outside and take a nice walk!");
+            }
+            else{
+                moodpic.setImageResource(R.drawable.face_neutral);
+                suggest.setText("You should take a break and have a walk!");
+            }
+        }
     }
 
     @Override

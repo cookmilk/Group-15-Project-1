@@ -63,6 +63,8 @@ public class AnalyticsActivity extends AppCompatActivity {
     LineAndPointFormatter inactivityFormat;
     LineAndPointFormatter sleepFormat;
 
+    final SparkDataBase sdb = new SparkDataBase(this);
+
     final Number[] t_dates = {1459807533, 1459893933, 1459980333,
             1460066733, 1460153133, 1460239533, 1460325933, 1460412333, 1460498733, 1460585133,
             1460671533, 1460757933, 1460844333, 1460930733, 1461017133, 1461103533, 1461189748,
@@ -87,12 +89,28 @@ public class AnalyticsActivity extends AppCompatActivity {
     final Number[] s_activity = {5.2, 8.5, 6.5, 8.1, 5.5, 4.2, 8.9};
     final Number[] s_moods = {4.2, 5, 2.2, 4.1, 4, 4.99, 4.82};
 
-    Number[] d_dates ={1462086319,1462089619,1462093219, 1462096819, 1462100419, 1462104019, 1462107619, 1462111219,
-            1462114819};
-    Number[] d_sleep = {.12, 1.13, 2.12, 3.12, 4.12, 5.12, 6.12, 7.12, 8.12};
-    Number[] d_inactivity = {.01, .02, .03,.04,.05,.06,.07,.08,.09};
-    Number[] d_activity = {.001,.002,.003,.004,.005,.006,.0023,.0012,.012};
-    Number[] d_moods = {.0112,.00113,.0013,.0014,.0023,.0018,.0015,.0017,.00123};
+    Number[] d_dates ={1462235424,1462239024,1462242624, 1462246224,1462249824,1462253424,1462257053,
+            1462260653,1462264253,1462266053,1462269653,1462273253};
+    Number[] d_sleep = {0.001,1.12, 2.13, 3.12, 4.12, 5.12, 6.12, 7.125, 8.121, 8.122, 8.123,8.124};
+    Number[] d_inactivity = {.01, .02, .03,.0343,.344,.341,.021,.022,.05,1,1.67,2.01};
+    Number[] d_activity = {.001,.002,.003,.004,.005,.0051,.0052,1.4,3.02,4.5,5.12, 5.5};
+    Number[] d_moods = {.0112,.00113,.0013,.0014,.0023,.001,1.001,3.01,3.02,4.98,4.97,4.99};
+
+    Format monthly = new Format() {
+        private SimpleDateFormat dateFormat = new SimpleDateFormat("M/dd");
+        @Override
+        public StringBuffer format(Object obj, StringBuffer toAppendTo, FieldPosition pos) {
+            // because our timestamps are in seconds and SimpleDateFormat expects milliseconds
+            // we multiply our timestamp by 1000:
+            long timestamp = ((Number) obj).longValue() * 1000;
+            Date date = new Date(timestamp);
+            return dateFormat.format(date, toAppendTo, pos);
+        }
+        @Override
+        public Object parseObject(String source, ParsePosition pos) {
+            return null;
+        }
+    };
 
     View.OnClickListener listener = new View.OnClickListener() {
         public void onClick(View v) {
@@ -134,19 +152,18 @@ public class AnalyticsActivity extends AppCompatActivity {
                 y_activity = s_activity;
                 y_mood = s_moods;
 
+                mySimpleXYPlot.setDomainValueFormat(monthly);
+
             } else {
-                Log.i("WHAT IS THE GD POSITION", Integer.toString(position));
                 x = t_dates;
                 y_sleep = t_sleep;
                 y_inactivity = t_inactivity;
                 y_activity = t_activity;
                 y_mood = t_moods;
+
+                mySimpleXYPlot.setDomainValueFormat(monthly);
             }
 
-            Log.i("OH MY GFUCKING GOD" , Integer.toString(x.length) + "  " + Integer.toString(y_mood.length));
-            Log.i("OH MY GFUCKING GOD" , Integer.toString(x.length) + "  " + Integer.toString(y_inactivity.length));
-            Log.i("OH MY GFUCKING GOD" , Integer.toString(x.length) + "  " + Integer.toString(y_activity.length));
-            Log.i("OH MY GFUCKING GOD" , Integer.toString(x.length) + "  " + Integer.toString(y_sleep.length));
             moodPlot = new SimpleXYSeries(Arrays.asList(x), Arrays.asList(y_mood), " ");
             inactivityPlot = new SimpleXYSeries(Arrays.asList(x), Arrays.asList(y_inactivity), " ");
             activityPlot = new SimpleXYSeries(Arrays.asList(x), Arrays.asList(y_activity), " ");
@@ -183,6 +200,20 @@ public class AnalyticsActivity extends AppCompatActivity {
 
             // draw a domain tick for each year:
             mySimpleXYPlot.setDomainStep(XYStepMode.SUBDIVIDE, 7);
+
+            mySimpleXYPlot.clear();
+            if (mood.isChecked()) {
+                mySimpleXYPlot.addSeries(moodPlot, moodFormat);
+            }
+            if (activity.isChecked()) {
+                mySimpleXYPlot.addSeries(activityPlot, activityFormat);
+            }
+            if (inactivity.isChecked()) {
+                mySimpleXYPlot.addSeries(inactivityPlot, inactivityFormat);
+            }
+            if (sleep.isChecked()) {
+                mySimpleXYPlot.addSeries(sleepPlot, sleepFormat);
+            }
             mySimpleXYPlot.redraw();
         }
 
@@ -231,9 +262,18 @@ public class AnalyticsActivity extends AppCompatActivity {
 
             // draw a domain tick for each year:
             mySimpleXYPlot.setDomainStep(XYStepMode.SUBDIVIDE, 7);
-            mySimpleXYPlot.redraw();
-
-
+            if (mood.isChecked()) {
+                mySimpleXYPlot.addSeries(moodPlot, moodFormat);
+            }
+            if (activity.isChecked()) {
+                mySimpleXYPlot.addSeries(activityPlot, activityFormat);
+            }
+            if (inactivity.isChecked()) {
+                mySimpleXYPlot.addSeries(inactivityPlot, inactivityFormat);
+            }
+            if (sleep.isChecked()) {
+                mySimpleXYPlot.addSeries(sleepPlot, sleepFormat);
+            }
             mySimpleXYPlot.redraw();
         }
     };
@@ -250,26 +290,65 @@ public class AnalyticsActivity extends AppCompatActivity {
         inactivity = (CheckBox) findViewById(R.id.checkBox4);
         Spinner spin = (Spinner) findViewById(R.id.spinner);
 
-
         mySimpleXYPlot = (XYPlot) findViewById(R.id.plot);
 
-//        y_mood = d_moods;
-//        x = d_dates;
-//        y_actity = d_activity;
-//        y_inactivity = d_inactivity;
-//        y_sleep= d_sleep;
+        y_mood = d_moods;
+        x = d_dates;
+        y_activity = d_activity;
+        y_inactivity = d_inactivity;
+        y_sleep= d_sleep;
+
+        moodPlot = new SimpleXYSeries(Arrays.asList(x), Arrays.asList(y_mood), " ");
+        inactivityPlot = new SimpleXYSeries(Arrays.asList(x), Arrays.asList(y_inactivity), " ");
+        activityPlot = new SimpleXYSeries(Arrays.asList(x), Arrays.asList(y_activity), " ");
+        sleepPlot = new SimpleXYSeries(Arrays.asList(x), Arrays.asList(y_sleep), " ");
+        moodFormat = new LineAndPointFormatter();
+        moodFormat.setPointLabelFormatter(new PointLabelFormatter());
+        moodFormat.configure(getApplicationContext(),
+                R.xml.line_mood);
+        moodFormat.setPointLabeler(null);
+        // setup our line fill paint to be a slightly transparent gradient:
+        activityFormat = new LineAndPointFormatter();
+        activityFormat.setPointLabelFormatter(new PointLabelFormatter());
+        activityFormat.configure(getApplicationContext(),
+                R.xml.line_activity);
+        activityFormat.setPointLabeler(null);
+
+        inactivityFormat = new LineAndPointFormatter();
+        inactivityFormat.setPointLabelFormatter(new PointLabelFormatter());
+        inactivityFormat.configure(getApplicationContext(),
+                R.xml.line_inactivity);
+        inactivityFormat.setPointLabeler(null);
+        sleepFormat = new LineAndPointFormatter();
+        sleepFormat.setPointLabelFormatter(new PointLabelFormatter());
+        sleepFormat.configure(getApplicationContext(),
+                R.xml.line_sleep);
+        sleepFormat.setPointLabeler(null);
+
+        mySimpleXYPlot.getGraphWidget().setPaddingRight(2);
+//        Paint color = new Paint(Color.parseColor("#FFFFFF"));
+//        mySimpleXYPlot.getGraphWidget().setDomainTickLabelPaint(color);
+//        mySimpleXYPlot.getGraphWidget().getDomainTickLabelPaint().setTextSize(PixelUtils.spToPix(13));
+//        mySimpleXYPlot.getGraphWidget().getRangeTickLabelPaint().setTextSize(PixelUtils.spToPix(13));
+//        mySimpleXYPlot.getGraphWidget().setRangeTickLabelPaint(color);
+
+        // draw a domain tick for each year:
+        mySimpleXYPlot.setDomainStep(XYStepMode.SUBDIVIDE, 7);
+        mySimpleXYPlot.redraw();
 
 
         spin.setOnItemSelectedListener(listen);
-        x = s_dates;
-        y_sleep = s_sleep;
-        y_inactivity = s_inactivity;
-        y_activity = s_activity;
-        y_mood = s_moods;
 
 
+        mySimpleXYPlot.getGraphWidget().setPaddingRight(2);
+//        Paint color = new Paint(Color.parseColor("#FFFFFF"));
+//        mySimpleXYPlot.getGraphWidget().setDomainTickLabelPaint(color);
+//        mySimpleXYPlot.getGraphWidget().getDomainTickLabelPaint().setTextSize(PixelUtils.spToPix(13));
+//        mySimpleXYPlot.getGraphWidget().getRangeTickLabelPaint().setTextSize(PixelUtils.spToPix(13));
+//        mySimpleXYPlot.getGraphWidget().setRangeTickLabelPaint(color);
 
-
+        // draw a domain tick for each year:
+        mySimpleXYPlot.setDomainStep(XYStepMode.SUBDIVIDE, 7);
         mySimpleXYPlot.setBorderStyle(Plot.BorderStyle.SQUARE, null, null);
         mySimpleXYPlot.getBorderPaint().setStrokeWidth(1);
         mySimpleXYPlot.getBorderPaint().setAntiAlias(false);
@@ -278,9 +357,7 @@ public class AnalyticsActivity extends AppCompatActivity {
         mySimpleXYPlot.getGraphWidget().getDomainOriginLinePaint().setColor(Color.BLACK);
         mySimpleXYPlot.getGraphWidget().getRangeOriginLinePaint().setColor(Color.BLACK);
 
-
         // Create a formatter to use for drawing a series using LineAndPointRenderer:// fill color
-
 
         // customize our domain/range labels
         mySimpleXYPlot.setDomainLabel("Date");
@@ -295,12 +372,27 @@ public class AnalyticsActivity extends AppCompatActivity {
         inactivity.setOnClickListener(listener);
         sleep.setOnClickListener(listener);
 
+        mySimpleXYPlot.setDomainStep(XYStepMode.SUBDIVIDE, 7);
+        if (mood.isChecked()) {
+            mySimpleXYPlot.addSeries(moodPlot, moodFormat);
+        }
+        if (activity.isChecked()) {
+            mySimpleXYPlot.addSeries(activityPlot, activityFormat);
+        }
+        if (inactivity.isChecked()) {
+            mySimpleXYPlot.addSeries(inactivityPlot, inactivityFormat);
+        }
+        if (sleep.isChecked()) {
+            mySimpleXYPlot.addSeries(sleepPlot, sleepFormat);
+        }
+        mySimpleXYPlot.redraw();
+
         mySimpleXYPlot.setDomainValueFormat(new Format() {
 
             // create a simple date format that draws on the year portion of our timestamp.
             // see http://download.oracle.com/javase/1.4.2/docs/api/java/text/SimpleDateFormat.html
             // for a full description of SimpleDateFormat."h:mm a"
-            private SimpleDateFormat dateFormat = new SimpleDateFormat("M/dd");
+            private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
 
             @Override
             public StringBuffer format(Object obj, StringBuffer toAppendTo, FieldPosition pos) {

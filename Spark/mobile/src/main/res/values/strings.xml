@@ -6,7 +6,7 @@
     <string name="title_activity_first_time_setup3">FirstTimeSetup3Activity</string>
     <string name="title_activity_home_page">HomePageActivity</string>
     <string name="title_activity_menu_page">MenuPageActivity</string>
-    <string name="title_activity_analytics">AnalyticsActivity</string>
+    <string name="title_activity_analytics">Analytics</string>
     <string name="title_activity_challenge_page1">ChallengePage1Activity</string>
     <string name="title_activity_challenge_page2">ChallengePage2Activity</string>
     <string name="title_activity_challenge_page3">ChallengePage3Activity</string>
@@ -20,7 +20,7 @@
     <string name="setup_string_1">Before you start using Spark - CBT Diary, it is recommended for you
     to do the first time setup. This is entirely optional and you can always change it through the
     options page.</string>
-    <string name="title_activity_home_screen_menu">HomeScreenMenuActivity</string>
+    <string name="title_activity_home_screen_menu">Home</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

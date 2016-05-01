@@ -21,30 +21,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="8dp">
-            <LinearLayout
-                android:orientation="horizontal"
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/Box">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View Data For"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="45dp"
-                    android:layout_marginTop="3dp"
-                    android:id="@+id/textView"
-                    android:textColor="#070707"/>
-
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:id="@+id/spinner"
-                    android:entries="@array/dates"
-                    android:layout_toEndOf="@id/textView"/>
-            </LinearLayout>
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Progress Statistics"
+                android:id="@+id/textView2"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft = "3dp"/>
 
             <com.androidplot.xy.XYPlot
                 android:layout_marginRight="10dp"
@@ -56,7 +42,7 @@
                 ap:domainLabel=" "
                 ap:borderColor="#ffffff"
                 ap:backgroundColor="#ffffff"
-                ap:graphBackgroundColor="#ffffff"
+                ap:graphBackgroundColor="#222222"
                 ap:gridBackgroundColor="#F4F4F4"
                 ap:gridPaddingLeft="5dp"
                 ap:gridPaddingRight="10dp"
@@ -83,16 +69,42 @@
                 ap:legendIconWidth="2dp"
                 ap:legendHeight="2dp"
                 ap:legendAnchorPosition="right_bottom"
-                android:layout_below="@+id/Box"
+                android:layout_below="@+id/textView2"
                 android:layout_alignParentEnd="true"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Box"
+                android:layout_below="@+id/plot"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Data For"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/textView"
+                    android:textColor="#070707"/>
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/spinner"
+                    android:entries="@array/dates"
+                    android:layout_toEndOf="@id/textView"/>
+            </LinearLayout>
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mood"
                 android:id="@+id/checkBox"
-                android:textColor="#feba00"
-                android:buttonTint="#feba00"
+                android:textColor="#222222"
+                android:buttonTint="#6acc6d"
                 android:checked="true"
                 android:layout_marginStart="36dp"
                 android:layout_above="@+id/checkBox4"
@@ -105,13 +117,13 @@
                 android:layout_height="wrap_content"
                 android:text="Activity (K Steps)"
                 android:id="@+id/checkBox2"
-                android:layout_marginStart="41dp"
+                android:layout_marginStart="45dp"
                 android:layout_alignTop="@+id/checkBox"
                 android:layout_toEndOf="@+id/checkBox"
                 android:singleLine="true"
                 android:checked="true"
-                android:buttonTint="#ff1d70"
-                android:textColor="#ff1d70"
+                android:buttonTint="#f8b45f"
+                android:textColor="#222222"
                 />
 
             <CheckBox
@@ -119,10 +131,11 @@
                 android:layout_height="wrap_content"
                 android:text="Sleep (hrs)"
                 android:id="@+id/checkBox3"
-                android:textColor="#2fff00"
-                android:buttonTint="#2fff00"
+                android:textColor="#222222"
+                android:buttonTint="#bb6bcc"
                 android:checked="true"
                 android:layout_alignParentBottom="true"
+                android:layout_marginBottom="50dp"
                 android:layout_alignStart="@+id/checkBox" />
 
             <CheckBox
@@ -130,10 +143,11 @@
                 android:layout_height="wrap_content"
                 android:text="Inactivity (hrs)"
                 android:id="@+id/checkBox4"
-                android:textColor="#8300e1"
-                android:buttonTint="#8300e1"
+                android:textColor="#222222"
+                android:buttonTint="#ec5250"
                 android:checked="true"
                 android:layout_alignParentBottom="true"
+                android:layout_marginBottom="50dp"
                 android:layout_alignStart="@+id/checkBox2"/>
         </RelativeLayout>
 
