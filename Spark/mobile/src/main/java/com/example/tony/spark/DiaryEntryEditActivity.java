@@ -8,9 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class DiaryEntryEditActivity extends AppCompatActivity {
-    EditText initial_thoughts = (EditText)findViewById(R.id.initial_thoughts);
-    EditText action_plan = (EditText) findViewById(R.id.action_plan);
-    EditText cha = (EditText) findViewById(R.id.challenge);
     final SparkDataBase sdb = new SparkDataBase(this);
     int mood = 0;
 
@@ -18,6 +15,9 @@ public class DiaryEntryEditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_diary_entry_edit);
+        final EditText initial_thoughts = (EditText)findViewById(R.id.initial_thoughts);
+        final EditText action_plan = (EditText) findViewById(R.id.action_plan);
+        final EditText cha = (EditText) findViewById(R.id.challenge);
 
         Intent intent = getIntent();
         final String date = intent.getStringExtra("date");
@@ -41,6 +41,7 @@ public class DiaryEntryEditActivity extends AppCompatActivity {
                 String ap = action_plan.getText().toString();
                 String c = cha.getText().toString();
                 sdb.insertDiary(date, time, it, ap, c, mood);
+                startActivity(new Intent(DiaryEntryEditActivity.this, DiaryActivity.class));
             }
         });
     }

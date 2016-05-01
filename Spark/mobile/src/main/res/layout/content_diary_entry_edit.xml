@@ -49,24 +49,24 @@
             android:layout_height="wrap_content"
             android:id="@+id/initial_thoughts"
             android:layout_gravity="center_horizontal"
-            android:text="Initial Thoughts"
-            android:textColor="#878787" />
+            android:textColor="#878787"
+            android:hint="initial thoughts" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/action_plan"
             android:layout_gravity="center_horizontal"
-            android:text="Action Plan"
-            android:textColor="#878787" />
+            android:textColor="#878787"
+            android:hint="action plan" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/challenge"
             android:layout_gravity="center_horizontal"
-            android:text="Challenge your thinking"
-            android:textColor="#878787" />
+            android:textColor="#878787"
+            android:hint="challenge" />
 
         <Button
             android:layout_width="wrap_content"
