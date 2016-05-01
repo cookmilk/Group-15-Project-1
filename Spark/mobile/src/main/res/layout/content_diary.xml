@@ -2,18 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+<<<<<<< HEAD
 
 
+=======
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+>>>>>>> origin/master
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_diary" tools:context="com.example.jeremy.spark.DiaryActivity">
 
-    <!--<android.support.v7.widget.CardView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content">-->
-        <!--card_view:cardCornerRadius="2dp"-->
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="490dp"
+        card_view:cardCornerRadius="2dp">
 
         <Space
             android:layout_width="342dp"
@@ -27,6 +31,7 @@
             android:layout_height="186dp"
             android:layout_gravity="center_horizontal"
             android:weightSum="1"
+            android:layout_marginTop="30dp"
             android:layout_weight="0.31">
 
             <TextView
@@ -152,4 +157,5 @@
                 android:background="#00ffffff" />
 
         </LinearLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>
