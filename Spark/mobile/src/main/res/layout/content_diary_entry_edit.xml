@@ -47,7 +47,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:id="@+id/initial_thoughts"
             android:layout_gravity="center_horizontal"
             android:text="Initial Thoughts"
             android:textColor="#878787" />
@@ -55,7 +55,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText2"
+            android:id="@+id/action_plan"
             android:layout_gravity="center_horizontal"
             android:text="Action Plan"
             android:textColor="#878787" />
@@ -63,7 +63,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText3"
+            android:id="@+id/challenge"
             android:layout_gravity="center_horizontal"
             android:text="Challenge your thinking"
             android:textColor="#878787" />
@@ -71,8 +71,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Entry"
-            android:id="@+id/button5"
+            android:text="Save"
+            android:id="@+id/save"
             android:layout_gravity="right"
             android:textColor="#009688"
             android:textSize="14dp"

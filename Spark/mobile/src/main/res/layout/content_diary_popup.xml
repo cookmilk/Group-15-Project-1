@@ -7,11 +7,5 @@
     tools:showIn="@layout/activity_diary_popup"
     tools:context="com.example.jeremy.spark.DiaryPopupActivity">
 
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/diary_popup_resized"
-        android:id="@+id/imageButton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true" />
+
 </RelativeLayout>

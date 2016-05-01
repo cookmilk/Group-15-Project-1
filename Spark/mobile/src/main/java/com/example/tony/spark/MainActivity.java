@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    SparkDataBase sdb = new SparkDataBase(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
