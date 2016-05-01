@@ -17,6 +17,15 @@ public class MainActivity extends AppCompatActivity {
         Button skip_button = (Button) findViewById(R.id.setup_1_button_1);
         Button next_button = (Button) findViewById(R.id.setup_1_button_2);
 
+        /** Uncomment below to test popup window*/
+//        Button temp = (Button) findViewById(R.id.temp);
+//        temp.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, DiaryActivity.class));
+//            }
+//        });
+
         skip_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){

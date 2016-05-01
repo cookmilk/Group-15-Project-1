@@ -85,8 +85,7 @@
         <activity
             android:name=".DiaryActivity"
             android:label="@string/title_activity_diary"
-            android:parentActivityName=".MenuPageActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:parentActivityName=".MenuPageActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.tony.spark.MenuPageActivity" />
@@ -95,7 +94,7 @@
             android:name=".DiaryPopupActivity"
             android:label="@string/title_activity_diary_popup"
             android:parentActivityName=".DiaryActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.DiaryPopTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.tony.spark.DiaryActivity" />
@@ -172,11 +171,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.tony.spark.Setup2Activity" />
         </activity>
-        <activity
-            android:name=".AboutActivity"
-            android:label="@string/title_activity_about"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
