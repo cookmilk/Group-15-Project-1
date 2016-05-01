@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -38,6 +39,7 @@ public class HomeScreenMenuActivity extends AppCompatActivity
         String emoticon = getIntent().getStringExtra("emoticon");
         ImageView moodpic = (ImageView) findViewById(R.id.moodz);
         TextView suggest = (TextView) findViewById(R.id.suggestion);
+        Intent sendIntent;
         if (emoticon != null){
             if (emoticon.equals("happy")){
                 moodpic.setImageResource(R.drawable.face_neutral);
@@ -45,12 +47,21 @@ public class HomeScreenMenuActivity extends AppCompatActivity
             }
             else if (emoticon.equals("neutral")){
                 moodpic.setImageResource(R.drawable.face_neutral);
+                String txt = "How about taking a walk?";
                 suggest.setText("You should go outside and take a nice walk!");
+                sendIntent = new Intent(this, PhoneToWatchService.class);
+                sendIntent.putExtra("noti", txt);
+                startService(sendIntent);
 
             }
             else{
                 moodpic.setImageResource(R.drawable.face_neutral);
                 suggest.setText("You should take a break and have a walk!");
+                String txt = "How about taking a walk?";
+                sendIntent = new Intent(this, PhoneToWatchService.class);
+                sendIntent.putExtra("noti", txt);
+                Log.i("What it do", "SEND ANDI NTENE");
+                startService(sendIntent);
             }
         }
     }
