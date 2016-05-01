@@ -45,8 +45,21 @@ public class Notification extends Activity {
                 setContentView(R.layout.activity_done);
             }
         }.start();
+        int id = v.getId();
+        String type;
+        if (id == R.id.textView4){
+            type = "happy";
+        }
+        else if (id == R.id.textView7){
+            type = "sad";
+        }
+        else{
+            type = "neutral";
+        }
+
         Log.i("WE HERE", "TRYNA PRINT");
         Intent sendIntent = new Intent(this, WatchToPhoneService.class);
+        sendIntent.putExtra("emo",type);
         this.startService(sendIntent);
     }
 

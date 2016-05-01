@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config
     linePaint.strokeWidth="2dp"
-    linePaint.color="#8300e1"
-    vertexPaint.color="#8300e1"
+    linePaint.color="#ec5250"
+    vertexPaint.color="#ec5250"
     vertexPaint.strokeWidth="5dp"
     fillPaint.color="#00000000"/>
