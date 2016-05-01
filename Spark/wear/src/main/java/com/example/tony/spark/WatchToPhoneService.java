@@ -70,7 +70,7 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
     public int onStartCommand(Intent intent, int flags, int startId) {
         // Which cat do we want to feed? Grab this info from INTENT
         // which was passed over when we called startService
-        Bundle extras = intent.getExtras();
+        final String extra1 = intent.getStringExtra("emo");
         final String path = "path"; //extras.getString("path"); //use path to differentiate output
 
         new Thread(new Runnable() {
@@ -78,8 +78,13 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
                 public void run() {
                 //first, connect to the apiclient
                     mWatchApiClient.connect();
+                    if(extra1 != null){
+                        Log.i("CAN U SEE THIS MEO", extra1);
+                        sendMessage("/" + path, extra1);
+                    }
+
                     //now that you're connected, send a massage with the cat name
-                    sendMessage("/" + path, "received");
+
                 }
             }).start();
 

@@ -24,7 +24,7 @@ public class PhoneListenerService extends WearableListenerService {
             String value = new String(messageEvent.getData(), StandardCharsets.UTF_8);
 
             // Make a toast with the String
-            Log.i("WE GOT THE TOAST", "WE'RE GOING IN");
+            Log.i("WE GOT THE TOAST", value);
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
 
