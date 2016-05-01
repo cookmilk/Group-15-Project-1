@@ -30,4 +30,9 @@
     <string name="title_activity_home_screen2">HomeScreen2Activity</string>
     <string name="title_activity_setup2">Setup2Activity</string>
     <string name="title_activity_setup3">Setup3Activity</string>
+    <string-array name="dates">
+        <item>Today</item>
+        <item>7 Days</item>
+        <item>30 Days</item>
+    </string-array>
 </resources>
