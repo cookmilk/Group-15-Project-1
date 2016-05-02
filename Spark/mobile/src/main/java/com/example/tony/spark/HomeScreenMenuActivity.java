@@ -42,7 +42,7 @@ public class HomeScreenMenuActivity extends AppCompatActivity
         Intent sendIntent;
         if (emoticon != null){
             if (emoticon.equals("happy")){
-                moodpic.setImageResource(R.drawable.face_neutral);
+                moodpic.setImageResource(R.drawable.happy_face);
                 suggest.setText("  ");
             }
             else if (emoticon.equals("neutral")){
@@ -55,7 +55,7 @@ public class HomeScreenMenuActivity extends AppCompatActivity
 
             }
             else{
-                moodpic.setImageResource(R.drawable.face_neutral);
+                moodpic.setImageResource(R.drawable.sad_face);
                 suggest.setText("You should take a break and have a walk!");
                 String txt = "How about taking a walk?";
                 sendIntent = new Intent(this, PhoneToWatchService.class);
@@ -74,13 +74,6 @@ public class HomeScreenMenuActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home_screen_menu, menu);
-        return true;
     }
 
     @Override
