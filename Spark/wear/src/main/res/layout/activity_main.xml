@@ -29,10 +29,9 @@
                 android:layout_height="35dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/day"
-
                 android:layout_marginRight="10dp"
                 android:weightSum="1"
-                android:background="#6BD799">
+                android:background="#009688">
 
                 <TextView
                     android:layout_width="50dp"
@@ -55,7 +54,7 @@
                 android:layout_height="35dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/month"
-                android:background="#6BD799">
+                android:background="#009688">
 
                 <TextView
                     android:layout_width="86dp"

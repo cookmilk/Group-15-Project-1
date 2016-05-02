@@ -3,6 +3,7 @@ package com.example.tony.spark;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.wearable.view.GridPagerAdapter;
 import android.support.wearable.view.GridViewPager;
@@ -75,17 +76,20 @@ public class DayActivity extends Activity {
             } else if (col == 1) {
 
                 title.setText("You were active for");
-                context.setText("6 hours 00 minutes");
-                context2.setText("Active for 25% of the day");
+                context.setText("2914 steps");
+                context.setTextColor(Color.parseColor("#f8b45f"));
+                context2.setText("29% of your goal");
             } else if (col == 2) {
 
                 title.setText("You were inactive for");
-                context.setText("6 hours 00 minutes");
-                context2.setText("Inactive for 25% of the day");
+                context.setText("2 hours 06 minutes");
+                context.setTextColor(Color.parseColor("#ec5250"));
+                context2.setText("33% of the day");
             } else {
                 title.setText("You slept for");
-                context.setText("12 hours 00 minutes");
-                context2.setText("Rest for 50% of the day");
+                context.setTextColor(Color.parseColor("#bb6bcc"));
+                context.setText("8 hours 23 minutes");
+                context2.setText(" ");
             }
 
             container.addView(view);

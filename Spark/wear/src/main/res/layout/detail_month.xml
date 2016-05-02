@@ -19,7 +19,7 @@
         android:id="@+id/title"
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"
-        android:textColor="#6BD799"
+        android:textColor="#009688"
         android:layout_weight="0.09" />
 
     <TextView
