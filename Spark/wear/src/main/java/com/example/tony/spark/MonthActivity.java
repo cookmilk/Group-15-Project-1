@@ -3,6 +3,7 @@ package com.example.tony.spark;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.wearable.view.GridPagerAdapter;
 import android.support.wearable.view.GridViewPager;
@@ -69,20 +70,25 @@ public class MonthActivity extends Activity {
 
 
             if (col == 0) {
-                title.setText("April 2016");
+                title.setText("May 2016");
                 context.setText("Average Mood");
+                context.setTextColor(Color.parseColor("#6acc6d"));
+                context2.setText("Happy");
             } else if (col == 1) {
-                title.setText("April 2016");
+                title.setText("May 2016");
                 context.setText("Activity Average");
-                context2.setText("3 hours 9 minutes");
+                context.setTextColor(Color.parseColor("#f8b45f"));
+                context2.setText("11913 Steps");
             } else if (col == 2) {
-                title.setText("April 2016");
+                title.setText("May 2016");
                 context.setText("Inactivity Average");
-                context2.setText("6 hours 19 minutes");
+                context.setTextColor(Color.parseColor("#ec5250"));
+                context2.setText("6 hours 12 minutes");
             } else {
-                title.setText("April 2016");
+                title.setText("May 2016");
                 context.setText("Sleep Average");
-                context2.setText("8 hours 20 minutes");
+                context.setTextColor(Color.parseColor("#bb6bcc"));
+                context2.setText("6 hours 20 minutes");
             }
             container.addView(view);
             return view;
