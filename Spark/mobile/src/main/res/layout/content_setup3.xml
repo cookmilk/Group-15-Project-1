@@ -98,10 +98,10 @@
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_width="fill_parent"
-        android:text="e.g. Bob"
         android:alpha=".34"
         android:textSize="12dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="e.g. Bob" />
 
 
     <RelativeLayout

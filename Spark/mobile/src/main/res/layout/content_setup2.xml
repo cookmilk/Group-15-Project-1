@@ -82,7 +82,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_width="fill_parent"
-        android:text="e.g. 07/14/94"
+        android:hint="e.g. 07/14/94"
         android:alpha=".34"
         android:textSize="12dp"
         android:layout_height="wrap_content" />
@@ -99,7 +99,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_width="fill_parent"
-        android:text="e.g. football, basketball, tennis"
+        android:hint="e.g. football, basketball, tennis"
         android:alpha=".34"
         android:textSize="12dp"
         android:layout_height="wrap_content" />
@@ -116,7 +116,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_width="fill_parent"
-        android:text="e.g. 10pm - 8am"
+        android:hint="e.g. 10pm - 8am"
         android:alpha=".34"
         android:textSize="12dp"
         android:layout_height="wrap_content" />
