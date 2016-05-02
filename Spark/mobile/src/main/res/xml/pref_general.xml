@@ -1,0 +1,28 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:text="@string/percent1"
+        android:key="challenge1"
+        android:title="Walk 5000 Steps"
+        android:summary="This challenge is repeatable once per day"
+        android:icon="@drawable/cup1"
+        android:editable="false"
+        android:background="@android:color/transparent"/>
+    <EditTextPreference
+        android:text="@string/percent2"
+        android:key="challenge2"
+        android:title="Sleep on Time for a Week"
+        android:summary="Make sure you get enough rest this week"
+        android:icon="@drawable/cup2"
+        android:editable="false"
+        android:background="@android:color/transparent"/>
+    <EditTextPreference
+        android:text="@string/percent3"
+        android:key="challenge3"
+        android:title="Do not sit down more than 6 times per day"
+        android:summary="Get up and excercise more!"
+        android:icon="@drawable/cup3"
+        android:editable="false"
+        android:background="@android:color/transparent"/>
+
+</PreferenceScreen>

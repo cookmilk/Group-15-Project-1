@@ -12,9 +12,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         isFirstTime ift = new isFirstTime();
-        setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState);
         if (ift.checkIt(this)) {
-            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
             Button skip_button = (Button) findViewById(R.id.setup_1_button_1);
             Button next_button = (Button) findViewById(R.id.setup_1_button_2);

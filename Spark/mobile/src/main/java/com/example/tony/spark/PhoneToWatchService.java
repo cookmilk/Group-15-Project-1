@@ -50,10 +50,7 @@ public class PhoneToWatchService extends Service {
         // which was passed over when we called startService
         Bundle extras = intent.getExtras();
 
-        final String from = extras.getString("from");
-        if (from.equals("data")){
-            data = extras.getString("data");
-        }
+        final String notif = extras.getString("noti");
         Log.i("WE'RE IN THE START", "LOOK");
         // Send the message with the cat name
         new Thread(new Runnable() {
@@ -62,7 +59,7 @@ public class PhoneToWatchService extends Service {
                 //first, connect to the apiclient
                 mApiClient.connect();
                 //now that you're connected, send a massage with the cat name
-                sendMessage(from, data);
+                sendMessage("notification", notif);
             }
         }).start();
 
