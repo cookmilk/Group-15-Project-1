@@ -106,11 +106,11 @@ public class HomeScreenMenuActivity extends AppCompatActivity
         } else if (id == R.id.nav_diary) {
             startActivity(new Intent(this, DiaryActivity.class));
         } else if (id == R.id.nav_challenge) {
-            startActivity(new Intent(this, ChallengePage1Activity.class));
+            startActivity(new Intent(this, ChallengeActivity.class));
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(this, AboutActivity.class));
         } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(this, Settings1Activity.class));
+            startActivity(new Intent(this, SettingsActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

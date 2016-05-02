@@ -1,0 +1,24 @@
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- These settings headers are only used on tablets. -->
+
+    <header
+        android:title="Change User Information"
+        android:icon="@drawable/ic_info_black_24dp"
+        android:summary="Tap here to change your user information">
+        <intent android:targetPackage="com.example.tony.spark"
+            android:targetClass="com.example.tony.spark.Setup2Activity"/>
+    </header>
+
+    <header
+        android:fragment="com.example.tony.spark.SettingsActivity$DataSyncPreferenceFragment"
+        android:title="Change Notification Frequency"
+        android:summary="Tap to change how often you get notification prompts"
+        android:icon="@drawable/ic_notifications_black_24dp" />
+
+    <header android:fragment="com.example.tony.spark.SettingsActivity$SettingsFragment"
+        android:title="Change Goals"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:summary="Tap to change sleep and step daily goals"/>
+
+</preference-headers>
