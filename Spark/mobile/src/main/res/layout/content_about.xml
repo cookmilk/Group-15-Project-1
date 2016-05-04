@@ -6,7 +6,34 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_about" tools:context="com.example.tony.spark.AboutActivity">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        card_view:cardElevation="4dp"
+        card_view:cardCornerRadius="2dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A Cognitive Behavioral Therapy Diary is used to help a user sort out their thoughts, and break the cycle of negativity.\n \nBy providing you with this tool, we hope you are able to develop more positive thought processes and behvaiors.\n\nIn addition to the journal there is an analytics page which allows you to track your progress quantitatively, and a challenges page which will allow you to set concrete goals.\n \nGood luck with your journey!"
+                android:layout_above = "@+id/logo"
+                android:layout_marginBottom="20dp"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/logo"
+                android:src="@drawable/applogo"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
 
 </RelativeLayout>
