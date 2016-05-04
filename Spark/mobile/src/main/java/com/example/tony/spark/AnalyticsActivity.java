@@ -89,12 +89,13 @@ public class AnalyticsActivity extends AppCompatActivity {
     final Number[] s_activity = {5.2, 8.5, 6.5, 8.1, 5.5, 4.2, 8.9};
     final Number[] s_moods = {4.2, 5, 2.2, 4.1, 4, 4.99, 4.82};
 
-    Number[] d_dates ={1462235424,1462239024,1462242624, 1462246224,1462249824,1462253424,1462257053,
-            1462260653,1462264253,1462266053,1462269653,1462273253};
-    Number[] d_sleep = {0.001,1.12, 2.13, 3.12, 4.12, 5.12, 6.12, 7.125, 8.121, 8.122, 8.123,8.124};
-    Number[] d_inactivity = {.01, .02, .03,.0343,.344,.341,.021,.022,.05,1,1.67,2.01};
-    Number[] d_activity = {.001,.002,.003,.004,.005,.0051,.0052,1.4,3.02,4.5,5.12, 5.5};
-    Number[] d_moods = {.0112,.00113,.0013,.0014,.0023,.001,1.001,3.01,3.02,4.98,4.97,4.99};
+    Number[] d_dates ={1462246224,1462249824,1462253424,1462257053,
+            1462260653,1462264253,1462269653,1462273253,1462276853,1462280453,
+            1462284053,1462287653,1462291253};
+    Number[] d_sleep = {0.001,1.12, 2.13, 3.12, 4.12, 5.12, 6.12, 7.125, 8.121,8.122,8.012,8.002,8.001};
+    Number[] d_inactivity = {.01, .02, .03,.0343,.344,.341,.021,.022,.5,1.2,1.5,2.002,2.45};
+    Number[] d_activity = {.001,.002,.003,.004,.005,.0051,.0052,.0032,.052,.5,1.23,1.78,2.15};
+    Number[] d_moods = {.0112,.00113,.0013,.0014,.0023,.001,.006,.0015,.0031,2.99,4.99,4.87,4.92};
 
     Format monthly = new Format() {
         private SimpleDateFormat dateFormat = new SimpleDateFormat("M/dd");
@@ -372,7 +373,7 @@ public class AnalyticsActivity extends AppCompatActivity {
         inactivity.setOnClickListener(listener);
         sleep.setOnClickListener(listener);
 
-        mySimpleXYPlot.setDomainStep(XYStepMode.SUBDIVIDE, 7);
+        mySimpleXYPlot.setDomainStep(XYStepMode.SUBDIVIDE, 3);
         if (mood.isChecked()) {
             mySimpleXYPlot.addSeries(moodPlot, moodFormat);
         }
@@ -392,7 +393,7 @@ public class AnalyticsActivity extends AppCompatActivity {
             // create a simple date format that draws on the year portion of our timestamp.
             // see http://download.oracle.com/javase/1.4.2/docs/api/java/text/SimpleDateFormat.html
             // for a full description of SimpleDateFormat."h:mm a"
-            private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
+            private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
 
             @Override
             public StringBuffer format(Object obj, StringBuffer toAppendTo, FieldPosition pos) {

@@ -94,6 +94,8 @@ public class MainActivity extends WearableActivity implements SensorEventListene
                 startActivity(i);
             }
         });
+
+        getStepCount();
     }
     private void getStepCount(){
         SensorManager mSensorManager = ((SensorManager) getSystemService(SENSOR_SERVICE));
