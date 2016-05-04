@@ -1,11 +1,18 @@
 package com.example.tony.spark;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 
 public class DiaryEntryEditActivity extends AppCompatActivity {
     final SparkDataBase sdb = new SparkDataBase(this);
@@ -14,7 +21,25 @@ public class DiaryEntryEditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_diary_entry_edit);
+        setContentView(R.layout.activity_diary_entry_edit);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        {
+            Window w = this.getWindow();
+            w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //status bar height
+            int statusBarHeight = (int) Math.ceil(25 * this.getResources().getDisplayMetrics().density);
+
+            View view = new View(this);
+            view.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            view.getLayoutParams().height = statusBarHeight;
+            ((ViewGroup) w.getDecorView()).addView(view);
+            view.setBackgroundColor(ContextCompat.getColor(this, R.color.colorLightGreenDark));
+        }
+
         final EditText initial_thoughts = (EditText)findViewById(R.id.initial_thoughts);
         final EditText action_plan = (EditText) findViewById(R.id.action_plan);
         final EditText cha = (EditText) findViewById(R.id.challenge);
@@ -41,7 +66,7 @@ public class DiaryEntryEditActivity extends AppCompatActivity {
                 String ap = action_plan.getText().toString();
                 String c = cha.getText().toString();
                 sdb.insertDiary(date, time, it, ap, c, mood);
-                startActivity(new Intent(DiaryEntryEditActivity.this, DiaryActivity.class));
+                startActivity(new Intent(DiaryEntryEditActivity.this, HomeScreenMenuActivity.class));
             }
         });
     }

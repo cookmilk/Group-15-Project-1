@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -14,12 +16,18 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
 
 import java.util.List;
 
@@ -39,6 +47,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
+        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(PreferenceManager.getDefaultSharedPreferences(this).getInt("app_color", getResources().getColor(R.color.colorPurple))));
     }
 
     /**
@@ -52,6 +61,17 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            int SUCCESS_RESULT=1;
+            setResult(SUCCESS_RESULT, new Intent());
+            finish();  //return to caller
+            return true;
+        }
+        return false;
+    }
 
     /**
      * {@inheritDoc}

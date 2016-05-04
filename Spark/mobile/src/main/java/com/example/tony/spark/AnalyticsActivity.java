@@ -1,16 +1,24 @@
 package com.example.tony.spark;
 
+import android.app.ActionBar;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.graphics.Paint;
 
@@ -283,6 +291,22 @@ public class AnalyticsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_analytics);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        {
+            Window w = this.getWindow();
+            w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //status bar height
+            int statusBarHeight = (int) Math.ceil(25 * this.getResources().getDisplayMetrics().density);
+
+            View view = new View(this);
+            view.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            view.getLayoutParams().height = statusBarHeight;
+            ((ViewGroup) w.getDecorView()).addView(view);
+            view.setBackgroundColor(ContextCompat.getColor(this, R.color.colorLightGreenDark));
+        }
 
         mood = (CheckBox) findViewById(R.id.checkBox);
         activity = (CheckBox) findViewById(R.id.checkBox2);

@@ -21,12 +21,17 @@
         <activity
             android:name=".AnalyticsActivity"
             android:label="@string/title_activity_analytics"
+            android:parentActivityName=".HomeScreenMenuActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tony.spark.HomeScreenMenuActivity" />
         </activity>
         <activity
             android:name=".FirstTimeSetup2Activity"
@@ -84,15 +89,16 @@
         </activity>
         <activity
             android:name=".DiaryActivity"
-            android:label="@string/title_activity_diary"
-            android:parentActivityName=".MenuPageActivity" >
+            android:label="Diary"
+            android:parentActivityName=".MenuPageActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.tony.spark.MenuPageActivity" />
         </activity>
         <activity
             android:name=".DiaryPopupActivity"
-            android:label="@string/title_activity_diary_popup"
+            android:label="Diary"
             android:parentActivityName=".DiaryActivity"
             android:theme="@style/AppTheme.DiaryPopTheme" >
             <meta-data
@@ -101,7 +107,7 @@
         </activity>
         <activity
             android:name=".DiaryEntryEditActivity"
-            android:label="@string/title_activity_diary_entry_edit"
+            android:label="Diary"
             android:parentActivityName=".DiaryPopupActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
@@ -150,7 +156,7 @@
 
         <activity
             android:name=".HomeScreenMenuActivity"
-            android:label="@string/title_activity_home_screen_menu"
+            android:label="Spark!"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
@@ -182,7 +188,7 @@
 
         <activity
             android:name=".AboutActivity"
-            android:label="@string/title_activity_about"
+            android:label="About"
             android:parentActivityName=".HomeScreenMenuActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
@@ -192,10 +198,10 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".HomeScreenActivity" >
+            android:parentActivityName=".HomeScreenMenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.tony.spark.HomeScreenActivity" />
+                android:value="com.example.tony.spark.HomeScreenMenuActivity" />
         </activity>
         <activity
             android:name=".ChallengeActivity"

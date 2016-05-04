@@ -102,4 +102,6 @@
     <string name="percent1">20%</string>
     <string name="percent2">60%</string>
     <string name="percent3">5%</string>
+    <string name="title_activity_timeline">TimelineActivity</string>
+    <string name="tab">\u0009</string>
 </resources>
