@@ -105,6 +105,7 @@ public class MainActivity extends WearableActivity implements SensorEventListene
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
             Integer value = (int) event.values[0];
+            Log.i("THIS IS STEPS", value.toString());
             text.setText(value.toString());
         }
     }
