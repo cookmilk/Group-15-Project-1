@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DayActivity extends Activity {
+    String steps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class DayActivity extends Activity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        steps = intent.getStringExtra("steps");
         if (extras != null) {
             String candidateString = extras.getString("CANDIDATE");
             if (candidateString.equals("One")) {
@@ -76,7 +78,7 @@ public class DayActivity extends Activity {
             } else if (col == 1) {
 
                 title.setText("You were active for");
-                context.setText("2914 steps");
+                context.setText(steps);
                 context.setTextColor(Color.parseColor("#f8b45f"));
                 context2.setText("29% of your goal");
             } else if (col == 2) {
@@ -84,7 +86,7 @@ public class DayActivity extends Activity {
                 title.setText("You were inactive for");
                 context.setText("2 hours 06 minutes");
                 context.setTextColor(Color.parseColor("#ec5250"));
-                context2.setText("33% of the day");
+                context2.setText("52% of the day");
             } else {
                 title.setText("You slept for");
                 context.setTextColor(Color.parseColor("#bb6bcc"));

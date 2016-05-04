@@ -27,7 +27,7 @@ public class MainActivity extends WearableActivity implements SensorEventListene
 //    private TextView mTextView;
     private BoxInsetLayout mContainerView;
     private TextView text;
-
+    String sendText = "2914 steps";
     private final int notification_id = 1;
 
     /* These are the classes you use to start the notification */
@@ -87,10 +87,12 @@ public class MainActivity extends WearableActivity implements SensorEventListene
         mContainerView = (BoxInsetLayout) findViewById(R.id.container);
 
 
+
         mContainerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, Notification.class);
+                i.putExtra("steps", sendText);
                 startActivity(i);
             }
         });
@@ -108,7 +110,7 @@ public class MainActivity extends WearableActivity implements SensorEventListene
         if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
             Integer value = (int) event.values[0];
             Log.i("THIS IS STEPS", value.toString());
-            text.setText(value.toString());
+            text.setText(value.toString() + " steps");
         }
     }
 
