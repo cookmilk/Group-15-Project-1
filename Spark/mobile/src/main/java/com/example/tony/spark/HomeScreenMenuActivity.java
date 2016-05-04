@@ -206,6 +206,7 @@ public class HomeScreenMenuActivity extends AppCompatActivity
 
     @Override
     protected void onResume() {
+        super.onResume();
         TextView todayDate = (TextView) findViewById(R.id.today_date);
         Button newEntry = (Button) findViewById(R.id.new_entry);
         SimpleDateFormat df = new SimpleDateFormat("M/dd HH:mm");
