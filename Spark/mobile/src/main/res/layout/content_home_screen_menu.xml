@@ -5,7 +5,7 @@
     android:layout_height="match_parent" android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="8dp"
-    android:paddingBottom="16dp"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_home_screen_menu"
     tools:context="com.example.tony.spark.HomeScreenMenuActivity"
@@ -44,7 +44,7 @@
                     android:layout_marginLeft="32dp"
                     android:layout_marginRight="32dp"
                     android:layout_marginBottom="8dp"
-                    android:alpha=".38"
+                    android:alpha=".20"
                     android:background="#000000" />
 
                 <RelativeLayout
@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:alpha=".54"
-                        android:text="Last Recorded Mood"
+                        android:text="Last Recorded Mood:"
                         android:textColor="#000000"
                         android:textSize="24dp"
                         android:layout_marginBottom="8dp"/>
@@ -91,7 +91,7 @@
                     android:layout_marginLeft="32dp"
                     android:layout_marginRight="32dp"
                     android:layout_marginBottom="8dp"
-                    android:alpha=".38"
+                    android:alpha=".20"
                     android:background="#000000" />
 
                 <LinearLayout
@@ -106,7 +106,8 @@
                         android:layout_width="wrap_content"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="1">
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -118,7 +119,8 @@
                             android:background="#00000000"
                             android:text="8 hrs"
                             android:alpha=".54"
-                            android:textSize="24dp"/>
+                            android:textSize="24dp"
+                            android:layout_weight="2.75" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -150,11 +152,11 @@
                             android:layout_height="wrap_content"
                             android:src="@drawable/sit_status" />
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="61dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:background="#00000000"
-                            android:text="2.1/6  hrs"
+                            android:text="2.1/6"
                             android:alpha=".54"
                             android:textSize="24dp"/>
                     </LinearLayout>
@@ -168,6 +170,7 @@
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             card_view:cardElevation="4dp"
             card_view:cardCornerRadius="2dp">
 
@@ -175,13 +178,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/sleep"
-                    android:id="@+id/sleep_wake"
-                    android:layout_gravity="center"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -203,6 +199,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#00000000"
+                        android:textColor="#000000"
+                        android:alpha=".54"
                         android:id="@+id/today_date"
                         android:textSize="24dp"
                         android:gravity="right"/>
@@ -214,7 +212,7 @@
                     android:layout_marginLeft="32dp"
                     android:layout_marginRight="32dp"
                     android:layout_marginBottom="8dp"
-                    android:alpha=".38"
+                    android:alpha=".20"
                     android:background="#000000" />
 
                 <LinearLayout
@@ -233,28 +231,79 @@
                     android:layout_marginLeft="32dp"
                     android:layout_marginRight="32dp"
                     android:layout_marginBottom="8dp"
-                    android:alpha=".38"
+                    android:alpha=".20"
                     android:background="#000000" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="48dp"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="32dp"
                         android:text="NEW ENTRY"
                         android:textSize="14dp"
-                        android:gravity="right|center_vertical"
-                        android:paddingRight="32dp"
                         android:id="@+id/new_entry"
-                        android:layout_gravity="center"
                         android:background="?android:selectableItemBackground"
-                        android:layout_weight="2"
                         android:textColor="#009688"
                         android:textStyle="bold" />
                 </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            card_view:cardElevation="4dp"
+            card_view:cardCornerRadius="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:alpha=".87"
+                    android:text="Toggle Sleep/Wake Timer "
+                    android:textColor="#000000"
+                    android:textSize="24dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:alpha=".54"
+                    android:text="This gives spark the ability to track your sleep patterns"
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:src="@drawable/sleep"
+                    android:id="@+id/sleep_wake"
+                    android:layout_gravity="center"/>
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
