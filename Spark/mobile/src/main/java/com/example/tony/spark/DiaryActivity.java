@@ -10,6 +10,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,6 +34,14 @@ public class DiaryActivity extends AppCompatActivity {
         Button today = (Button) findViewById(R.id.today);
         Button yesterday = (Button) findViewById(R.id.yesterday);
         Button newEntry = (Button) findViewById(R.id.new_entry);
+
+        DateFormat dateFormat = new SimpleDateFormat("M/dd HH:mm");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        final String yesterdayDateTime = dateFormat.format(cal.getTime());
+        final String[] yesterdayDateTimeArr = yesterdayDateTime.split(" ");
+        final String yesterdayDate = yesterdayDateTimeArr[0];
+        final String yesterdayTime = yesterdayDateTimeArr[1];
 
         today.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +75,45 @@ public class DiaryActivity extends AppCompatActivity {
                                         detailsArr = details.toArray(detailsArr);
                                         myIntent.putExtra("details", detailsArr);
                                         myIntent.putExtra("date", date);
+                                        myIntent.putExtra("time", time);
+                                        getActivity().startActivity(myIntent);
+                                    }
+                                });
+                        return builder.create();
+                    }
+                };
+                dialog.setCancelable(true);
+                dialog.show(getFragmentManager(), "dialog");
+            }
+        });
+
+        yesterday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<ArrayList<String>> timeAndEntries = sdb.getDiarySummary(yesterdayDate);
+                final ArrayList<String> times = timeAndEntries.get(0);
+                final ArrayList<String> entries = timeAndEntries.get(1);
+                Bundle bdl = new Bundle();
+                bdl.putString("date", yesterdayDate);
+                DiaryPopUp dpu = new DiaryPopUp();
+                DialogFragment dialog = new DialogFragment() {
+                    @Override
+                    public Dialog onCreateDialog(final Bundle savedInstanceState) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        String[] entriesArr = new String[entries.size()];
+                        entriesArr = entries.toArray(entriesArr);
+                        builder.setTitle(yesterdayDate)
+                                .setItems(entriesArr, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // The 'which' argument contains the index position
+                                        // of the selected item
+                                        Intent myIntent = new Intent(getActivity(), DiaryEntryEditActivity.class);
+                                        String time = times.get(which);
+                                        ArrayList<String> details = sdb.getSingleDiary(yesterdayDate, time);
+                                        String[] detailsArr = new String[details.size()];
+                                        detailsArr = details.toArray(detailsArr);
+                                        myIntent.putExtra("details", detailsArr);
+                                        myIntent.putExtra("date", yesterdayDate);
                                         myIntent.putExtra("time", time);
                                         getActivity().startActivity(myIntent);
                                     }

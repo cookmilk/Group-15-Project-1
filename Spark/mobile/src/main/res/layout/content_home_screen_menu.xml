@@ -196,7 +196,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#00000000"
-                        android:text="4/5"
+                        android:id="@+id/today_date"
                         android:textSize="24dp"
                         android:gravity="right"/>
 
@@ -222,25 +222,25 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="16dp"
                         android:alpha=".54"
-                        android:text="8:12 Morning Jog"
+                        android:id="@+id/entry1"
                         android:textColor="#000000"
                         android:background="#00000000"
                         android:textSize="24dp"
                         android:layout_marginBottom="8dp"/>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="right|center"
-                        android:paddingRight="24dp"
-                        android:layout_marginBottom="8dp">
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/plus"
-                            android:background="@null"
-                            android:gravity="center"/>
-                    </RelativeLayout>
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:gravity="right|center"-->
+                        <!--android:paddingRight="24dp"-->
+                        <!--android:layout_marginBottom="8dp">-->
+                        <!--<ImageButton-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:src="@drawable/plus"-->
+                            <!--android:background="@null"-->
+                            <!--android:gravity="center"/>-->
+                    <!--</RelativeLayout>-->
                 </LinearLayout>
 
                 <LinearLayout
@@ -255,25 +255,25 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="16dp"
                         android:alpha=".54"
-                        android:text="12:20 Lunch"
+                        android:id="@+id/entry2"
                         android:textColor="#000000"
                         android:background="#00000000"
                         android:textSize="24dp"
                         android:layout_marginBottom="8dp"/>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center|right"
-                        android:layout_marginBottom="8dp">
-                        <ImageButton
-                            android:layout_marginRight="24dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/plus"
-                            android:background="@null"
-                            android:gravity="center"/>
-                    </RelativeLayout>
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:gravity="center|right"-->
+                        <!--android:layout_marginBottom="8dp">-->
+                        <!--<ImageButton-->
+                            <!--android:layout_marginRight="24dp"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:src="@drawable/plus"-->
+                            <!--android:background="@null"-->
+                            <!--android:gravity="center"/>-->
+                    <!--</RelativeLayout>-->
                 </LinearLayout>
 
                 <LinearLayout
@@ -288,25 +288,25 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="16dp"
                         android:alpha=".54"
-                        android:text="8:56 Nap"
+                        android:id="@+id/entry3"
                         android:textColor="#000000"
                         android:background="#00000000"
                         android:textSize="24dp"
                         android:layout_marginBottom="8dp"/>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center|right"
-                        android:layout_marginBottom="8dp">
-                        <ImageButton
-                            android:layout_marginRight="24dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/plus"
-                            android:background="@null"
-                            android:gravity="center"/>
-                    </RelativeLayout>
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:gravity="center|right"-->
+                        <!--android:layout_marginBottom="8dp">-->
+                        <!--<ImageButton-->
+                            <!--android:layout_marginRight="24dp"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:src="@drawable/plus"-->
+                            <!--android:background="@null"-->
+                            <!--android:gravity="center"/>-->
+                    <!--</RelativeLayout>-->
                 </LinearLayout>
 
                 <View android:layout_width="wrap_content"
@@ -330,7 +330,7 @@
                         android:textSize="14dp"
                         android:gravity="right|center_vertical"
                         android:paddingRight="32dp"
-                        android:id="@+id/setup_1_button_2"
+                        android:id="@+id/new_entry"
                         android:layout_gravity="center"
                         android:background="?android:selectableItemBackground"
                         android:layout_weight="2"

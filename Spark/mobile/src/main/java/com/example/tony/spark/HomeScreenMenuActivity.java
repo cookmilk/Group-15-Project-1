@@ -14,8 +14,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class HomeScreenMenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -64,6 +71,37 @@ public class HomeScreenMenuActivity extends AppCompatActivity
                 startService(sendIntent);
             }
         }
+
+        TextView todayDate = (TextView) findViewById(R.id.today_date);
+        Button newEntry = (Button) findViewById(R.id.new_entry);
+        SimpleDateFormat df = new SimpleDateFormat("M/dd HH:mm");
+        Calendar c = Calendar.getInstance();
+        final String dateTime = df.format(c.getTime());
+        String[] dateTimeArr = dateTime.split(" ");
+        final String date = dateTimeArr[0];
+        final String currTime = dateTimeArr[1];
+        todayDate.setText(date);
+
+        // To do: display entries
+//        SparkDataBase sdb = new SparkDataBase(this);
+//        List<ArrayList<String>> diarySummary = sdb.getDiarySummary(date);
+//        ArrayList<String> time = diarySummary.get(0);
+//        ArrayList<String> summary = diarySummary.get(1);
+//        int numEntries = time.size();
+//        if (numEntries > 3) {
+//
+//        }
+
+
+        newEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DiaryEntryEditActivity.class);
+                intent.putExtra("date", date);
+                intent.putExtra("time", currTime);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
