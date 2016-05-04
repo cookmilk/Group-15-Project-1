@@ -103,8 +103,8 @@ public class HomeScreenMenuActivity extends AppCompatActivity
                     ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             TextView tv = new TextView(this);
             tv.setLayoutParams(lparams);
-            String t = time.get(i);
-            String e = summary.get(i);
+            String t = time.get(numEntries - i - 1);
+            String e = summary.get(numEntries - i - 1);
             tv.setText(t + "   " + e);
             entries.addView(tv);
             entriesList.add(tv);
@@ -207,83 +207,5 @@ public class HomeScreenMenuActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        TextView todayDate = (TextView) findViewById(R.id.today_date);
-        Button newEntry = (Button) findViewById(R.id.new_entry);
-        SimpleDateFormat df = new SimpleDateFormat("M/dd HH:mm");
-        Calendar c = Calendar.getInstance();
-        final String dateTime = df.format(c.getTime());
-        String[] dateTimeArr = dateTime.split(" ");
-        final String date = dateTimeArr[0];
-        final String currTime = dateTimeArr[1];
-        todayDate.setText(date);
-
-        // To do: display entries
-        LinearLayout entries =(LinearLayout) findViewById(R.id.entries);
-
-        final SparkDataBase sdb = new SparkDataBase(this);
-        List<ArrayList<String>> diarySummary = sdb.getDiarySummary(date);
-        ArrayList<String> time = diarySummary.get(0);
-        ArrayList<String> summary = diarySummary.get(1);
-        int numEntries = time.size();
-        List<TextView> entriesList = new ArrayList<TextView>();
-        for (int i = 0; i < Math.min(3, numEntries); i++) {
-            ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            TextView tv = new TextView(this);
-            tv.setLayoutParams(lparams);
-            String t = time.get(i);
-            String e = summary.get(i);
-            tv.setText(t + "   " + e);
-            entries.addView(tv);
-            entriesList.add(tv);
-        }
-        for (int j = 0; j < entriesList.size(); j++) {
-            e = entriesList.get(j);
-            e.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String[] timeEntry = e.getText().toString().split("   ");
-                    String t = timeEntry[0];
-                    Intent myIntent = new Intent(v.getContext(), DiaryEntryEditActivity.class);
-                    ArrayList<String> details = sdb.getSingleDiary(date, t);
-                    String[] detailsArr = new String[details.size()];
-                    detailsArr = details.toArray(detailsArr);
-                    myIntent.putExtra("details", detailsArr);
-                    myIntent.putExtra("date", date);
-                    myIntent.putExtra("time", t);
-                    v.getContext().startActivity(myIntent);
-                }
-            });
-        }
-
-        final ImageView sw = (ImageView) findViewById(R.id.sleep_wake);
-        final SharedPreferences sleep_wake = getSharedPreferences(PREFS, 0);
-        final SharedPreferences.Editor editor = sleep_wake.edit();
-        sw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean wake = sleep_wake.getBoolean("wake", true);
-                if (wake) {
-                    sw.setImageResource(R.drawable.wake);
-                    editor.putBoolean("wake", false);
-                    editor.commit();
-                } else {
-                    sw.setImageResource(R.drawable.sleep);
-                    editor.putBoolean("wake", true);
-                    editor.commit();
-                }
-            }
-        });
-
-
-        newEntry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DiaryEntryEditActivity.class);
-                intent.putExtra("date", date);
-                intent.putExtra("time", currTime);
-                v.getContext().startActivity(intent);
-            }
-        });
     }
 }
