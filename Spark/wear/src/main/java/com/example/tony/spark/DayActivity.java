@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.wearable.view.GridPagerAdapter;
 import android.support.wearable.view.GridViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,10 @@ public class DayActivity extends Activity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         steps = intent.getStringExtra("steps");
+        if(steps == null){
+            Log.i("test", "1500");
+            steps = "2331";
+        }
         if (extras != null) {
             String candidateString = extras.getString("CANDIDATE");
             if (candidateString.equals("One")) {
@@ -78,6 +83,7 @@ public class DayActivity extends Activity {
             } else if (col == 1) {
 
                 title.setText("You were active for");
+                Log.i("This is steps", steps);
                 context.setText(steps);
                 context.setTextColor(Color.parseColor("#f8b45f"));
                 context2.setText("29% of your goal");
