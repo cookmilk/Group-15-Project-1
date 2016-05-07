@@ -47,7 +47,7 @@ Challenges <br />
 Change your preferences <br />
 <img src="screenshots/settings.jpg" height="400" alt="Screenshot"/>
 
-Choose your current mood
+Choose your current mood <br />
 <img src="screenshots/watch_1.jpg" height="200" alt="Screenshot"/>
 
 See your improvement
