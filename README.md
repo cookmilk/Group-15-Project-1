@@ -56,6 +56,6 @@ See your improvement
 
 ## Acknowledgements
 
-* Many functions were taken and modified from stackoverflow, links to particular pages are commented on top of the function in the source code.
+* Many functions were taken and modified from stackoverflow; links to particular pages are commented on top of the function in the source code.
 * Many helpful hints were given out on piazza by other students and gsi’s.
-* Google’s api guides and class documentations were really useful for implemented certain features.
+* Google’s api guides and class documentations were really useful for implementing certain features.
