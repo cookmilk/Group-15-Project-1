@@ -48,7 +48,7 @@ Change your preferences <br />
 <img src="screenshots/settings.jpg" height="400" alt="Screenshot"/>
 
 Choose your current mood
-<img src="screenshots/watch_1.jpg" height="400" alt="Screenshot"/>
+<img src="screenshots/watch_1.jpg" height="200" alt="Screenshot"/>
 
 See your improvement
 <img src="screenshots/watch_2.jpg" height="400" alt="Screenshot"/>
